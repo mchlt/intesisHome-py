@@ -1,4 +1,4 @@
-#!/usr/bin/ewnv python3
+#!/usr/bin/env python3
 #
 # Command line interface to IntesisHome (AirconWithMe) product on local network
 # Tested with Mitsubishi Heavy Industrties (MHI) Air Conditioner unit, but should work with other models as well
