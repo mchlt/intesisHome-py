@@ -1,4 +1,6 @@
 # IHfunctions.py
+# Written by Michiel Tiller (https://github.com/mchlt). GPLv3 license
+#
 
 import requests
 import json

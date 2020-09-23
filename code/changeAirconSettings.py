@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 #
 # Command line interface to IntesisHome (AirconWithMe) product on local network
-# Tested with Mitsubishi Heavy Industrties (MHI) Air Conditioner unit, but should work with other models as well
-# Written by Michiel Tiller (https://github.com/mchlt)
+# Tested with Mitsubishi Heavy Industries (MHI) Air Conditioner unit, but should work with other models as well
+# Written by Michiel Tiller (https://github.com/mchlt). GPLv3 license.
 #
+# CLI to set air conditioning parameters
+
 
 import os
 import sys, getopt
@@ -52,8 +54,12 @@ def main(argv):
     if power!=None:
         if power.lower()=='on':
             pwr=1
-        else:
+        elif power.lower()=='off':
             pwr=0
+        else:
+            print('Invalid power setting specified')
+            printUsage()
+            sys.exit(2)
         setdatapointvalue(host, sessionID, 1, pwr)
 
     if mode!=None:
@@ -66,7 +72,43 @@ def main(argv):
             sys.exit(2)
         setdatapointvalue(host, sessionID, 2, mde)
 
+    if fanspeed!=None:
+        try:
+            fan=int(fanspeed)
+            if (fan<1) or (fan>4):
+                raise ValueError
+        except:
+            print('Invalid fan speed specified')
+            printUsage()
+            sys.exit(2)
+        setdatapointvalue(host, sessionID, 4, fan)
+        
+    if vanepos!=None:
+        if vanepos.lower()=="swing":
+            vane=10
+        else:
+            try:
+                vane=int(vanepos)
+                if (vane<1) or (vane>4):
+                    raise ValueError
+        except:
+            print('Invalid vane position specified')
+            printUsage()
+            sys.exit(2)
+        setdatapointvalue(host, sessionID, 5, vane)
 
+    if temp!=None:
+        try:
+            tmp=int(temp)
+            if (tmp<18) or (tmp>30):
+                raise ValueError
+        except:
+            print('Invalid temperature specified')
+            printUsage()
+            sys.exit(2)
+        tmp=tmp*10
+        setdatapointvalue(host, sessionID, 9, tmp)
+ 
 
 if __name__ == "__main__":
    main(sys.argv[1:])
