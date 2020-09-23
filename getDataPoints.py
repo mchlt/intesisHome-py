@@ -20,10 +20,10 @@ def sendAPIrequest( requestJSON ):
         r = requests.post('http://'+host+'/api.cgi', json=requestJSON )
     except err: # Catch any general HTTP errors like 500/400 responces
         print("Connecting to API server failed with error: " + str(err))
-        exit(1)
+        quit(1)
     resp = json.loads(r.text)
     if resp['success'] != True:
-        print("Login Failed!")
+        print("Request Failed!")
         print(resp['error'])
         quit(1)
     return(resp)
@@ -46,14 +46,17 @@ response=sendAPIrequest( request )
 datapointvalues = response['data']['dpval']
 
 
-for dp in datapointvalues:
-    print("%30s %s" % (uidString[dp['uid']], dp['value']) )
-
-# Get Config
-request={"command":"getcurrentconfig","data":{"sessionID":sessionID}}
-response=sendAPIrequest( request )
-print(response)
-
+for dpv in datapointvalues:
+    uid=dpv['uid']
+    dp = next((d for d in datapoints if d['uid'] == uid), None)
+    print(dp)
+    if (dp['type']==1):
+        value = dpv['value']
+    elif (dp['type']==2):
+        value = "%2s °C" % (dpv['value']%10)
+    else:
+        value = dpv['value']
+    print("%30s : %s" % (uidString[dpv['uid']], dpv['value']) )
 
 quit(0)
 
