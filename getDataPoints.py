@@ -49,14 +49,14 @@ datapointvalues = response['data']['dpval']
 for dpv in datapointvalues:
     uid=dpv['uid']
     dp = next((d for d in datapoints if d['uid'] == uid), None)
-    print(dp)
-    if (dp['type']==1):
-        value = dpv['value']
-    elif (dp['type']==2):
-        value = "%2s °C" % (dpv['value']%10)
+    if dp['type']==1:
+        value = datapointLabels[uid][dpv['value']]
+    elif dp['type']==2:
+        v = int(dpv['value']/10)
+        value = "%2s °C" % v
     else:
         value = dpv['value']
-    print("%30s : %s" % (uidString[dpv['uid']], dpv['value']) )
+    print("%30s : %s" % (uidString[dpv['uid']], value) )
 
 quit(0)
 

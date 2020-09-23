@@ -10,9 +10,9 @@ uidString={1:"On/off", 2:"User Mode", 4:"Fan Speed", 5:"Vane Up/Down position", 
 
 datapointLabels = {
  1:  {0:'Off',1:'On'}, 
- 2:  {0:'Auto', 1:'Heat', 2:'Dry', 3:'Fan', 4:'Cool'}
- 4:  {1:'Speed 1', 2:'Speed 2', 3:'Speed 3', 4:'Speed 4'}
- 5:  {1:'Position 1', 2:'Position 2', 3:'Position 3', 4:'Position 4', 10:'Swing'}
+ 2:  {0:'Auto', 1:'Heat', 2:'Dry', 3:'Fan', 4:'Cool'},
+ 4:  {1:'Speed 1', 2:'Speed 2', 3:'Speed 3', 4:'Speed 4'},
+ 5:  {1:'Position 1', 2:'Position 2', 3:'Position 3', 4:'Position 4', 10:'Swing'},
  12: {0:'Remote Enabled',1:'Remote Disabled'}, 
  14: {0:'Off',1:'On'}
 }
