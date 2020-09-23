@@ -91,10 +91,10 @@ def main(argv):
                 vane=int(vanepos)
                 if (vane<1) or (vane>4):
                     raise ValueError
-        except:
-            print('Invalid vane position specified')
-            printUsage()
-            sys.exit(2)
+            except:
+                print('Invalid vane position specified')
+                printUsage()
+                sys.exit(2)
         setdatapointvalue(host, sessionID, 5, vane)
 
     if temp!=None:
