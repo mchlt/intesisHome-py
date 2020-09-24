@@ -4,24 +4,30 @@
 
 import requests
 import json
+import sys
 
 def sendAPIrequest(host, requestJSON):
     try: #
         r = requests.post('http://'+host+'/api.cgi', json=requestJSON )
     except err: # Catch any general HTTP errors like 500/400 responces
         print("Connecting to API server failed with error: " + str(err))
-        quit(1)
+        sys.exit(1)
     resp = json.loads(r.text)
     if resp['success'] != True:
         print("Request Failed!")
         print(resp['error'])
-        quit(1)
+        sys.exit(1)
     return(resp)
 
 def login(host, username, password):
     request={"command":"login","data":{ "username": username, "password": password }}
     response=sendAPIrequest(host, request)
     return(response['data']['id']['sessionID'])
+
+def logout(host, sessionID):
+    request={"command":"logout","data":{"sessionID":sessionID}}
+    response=sendAPIrequest(host, request)
+    return(response['success'])
 	
 def getavailabledatapoints(host, sessionID):
     request={"command":"getavailabledatapoints","data":{"sessionID":sessionID}}

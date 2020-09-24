@@ -109,6 +109,8 @@ def main(argv):
         tmp=tmp*10
         setdatapointvalue(host, sessionID, 9, tmp)
  
+    logout(host, sessionID)
+ 
 
 if __name__ == "__main__":
    main(sys.argv[1:])

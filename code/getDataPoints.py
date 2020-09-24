@@ -34,6 +34,8 @@ for dpv in datapointvalues:
         value = dpv['value']
     print("%30s : %s" % (uidString[dpv['uid']], value) )
 
-quit(0)
+logout(host, sessionID)
+
+sys.exit()
 
 
