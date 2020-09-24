@@ -60,7 +60,7 @@ def main(argv):
             print('Invalid power setting specified')
             printUsage()
             sys.exit(2)
-        setdatapointvalue(host, sessionID, 1, pwr)
+        setdatapointvalue(host, sessionID, UID_ON_OFF, pwr)
 
     if mode!=None:
         modes=['auto','heat','dry','fan','cool']
@@ -70,7 +70,7 @@ def main(argv):
             print('Invalid mode specified') 
             printUsage()
             sys.exit(2)
-        setdatapointvalue(host, sessionID, 2, mde)
+        setdatapointvalue(host, sessionID, UID_USER_MODE, mde)
 
     if fanspeed!=None:
         try:
@@ -81,7 +81,7 @@ def main(argv):
             print('Invalid fan speed specified')
             printUsage()
             sys.exit(2)
-        setdatapointvalue(host, sessionID, 4, fan)
+        setdatapointvalue(host, sessionID, UID_FAN_SPEED, fan)
         
     if vanepos!=None:
         if vanepos.lower()=="swing":
@@ -95,7 +95,7 @@ def main(argv):
                 print('Invalid vane position specified')
                 printUsage()
                 sys.exit(2)
-        setdatapointvalue(host, sessionID, 5, vane)
+        setdatapointvalue(host, sessionID, UID_VANE_UP_DOWN_POSITION, vane)
 
     if temp!=None:
         try:
@@ -107,7 +107,7 @@ def main(argv):
             printUsage()
             sys.exit(2)
         tmp=tmp*10
-        setdatapointvalue(host, sessionID, 9, tmp)
+        setdatapointvalue(host, sessionID, UID_USER_SETPOINT, tmp)
  
     logout(host, sessionID)
  
