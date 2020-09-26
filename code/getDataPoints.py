@@ -10,7 +10,7 @@ from IHfunctions import *
 from IHconstants import *
 from configuration import *
 
-host='192.168.178.44'
+host='aircoslaapkamer'
 
 # login and get session ID
 sessionID = login(host, username, password)
