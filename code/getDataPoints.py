@@ -32,7 +32,7 @@ for dpv in datapointvalues:
         value = "%2s °C" % v
     else:
         value = dpv['value']
-    print("%30s : %s" % (uidString[dpv['uid']], value) )
+    print("%30s : %s" % (uidLabels[dpv['uid']], value) )
 
 logout(host, sessionID)
 

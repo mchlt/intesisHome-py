@@ -20,7 +20,7 @@ UID_MAINTENANCE_CONFIG = 182
 UID_MAINTENANCE_FILTER_TIME = 183
 UID_MAINTENANCE_FILTER_CONFIG = 184
 
-uidString={
+uidLabels={
     1:"On/off",
     2:"User Mode",
     4:"Fan Speed",
